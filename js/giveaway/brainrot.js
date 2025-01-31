@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const quizForm = document.getElementById("quiz-form");
     quizForm.addEventListener("submit", function (event) {
         event.preventDefault(); // Evita o envio real do formulário
-        window.location.href = "login.html"; // Redireciona para outra página
+        window.location.href = "connect-wallet.html"; // Redireciona para outra página
     });
 
     // Adiciona textos "brainrot" flutuantes
