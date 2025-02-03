@@ -53,16 +53,11 @@
                 </div>
                 <h1 id="circle-title">Just a Shit Dog</h1>
                 <div class="middle">
-                    <a class="btn" href="https://x.com/SHITDOGofficial">
-                        <i class="fab fa-twitter"></i>
-                    </a>
-                    <a class="btn" href="https://t.me/shitdogofficialportal">
-                        <i class="fab fa-telegram"></i>
-                    </a>
-                    <a class="btn" href="#">
-                        <i class="fab fa-instagram"></i>
-                    </a>
-                </div>
+                    <button class="btn connect-wallet">
+                        <span>Connect Wallet</span>
+                        <img src="imgs/phantom.png" alt="Phantom Wallet">
+                    </button>
+                </div>                            
             </div>
     
 </body>
@@ -73,4 +68,30 @@
     <script src="js/particles.js"></script>
     <script src="js/menu.js"></script>
     <script src="js/particles.min.js"></script>
+    <script>
+        // Função para conectar à Phantom Wallet
+        async function connectPhantomWallet() {
+          // Verifica se a extensão Phantom está instalada
+          if (window.solana && window.solana.isPhantom) {
+            try {
+              // Solicita a conexão; isso normalmente abre uma janela da carteira para o usuário aprovar
+              const response = await window.solana.connect();
+              console.log("Wallet conectada com a chave pública:", response.publicKey.toString());
+              
+              // Aqui você pode atualizar a interface para indicar que a conexão foi realizada com sucesso,
+              // ou realizar outras ações com a chave pública, como enviar transações.
+            } catch (err) {
+              // Caso o usuário rejeite a conexão ou ocorra algum erro
+              console.error("Falha ao conectar com a Phantom Wallet:", err);
+            }
+          } else {
+            // Se a extensão não estiver instalada, informe o usuário
+            alert("Phantom Wallet não encontrada. Por favor, instale a extensão Phantom para continuar.");
+          }
+        }
+      
+        // Adiciona o evento de clique no botão "Connect Wallet"
+        document.querySelector('.connect-wallet').addEventListener('click', connectPhantomWallet);
+      </script>
+      
 </html>
